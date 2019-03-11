@@ -65,35 +65,35 @@ public class DocumentComponent extends HttpComponent {
     }
 
     protected static <T> List<T> select(String url, Class<T> clazz, String elementsQuery, String... stringsQuery) {
-        return select(url, EMPTY_MAP, EMPTY_MAP, EMPTY_MAP, null, 0, null, clazz, elementsQuery, stringsQuery);
+        return select(url, EMPTY_MAP, EMPTY_MAP, EMPTY_MAP, null, -1, 0, null, clazz, elementsQuery, stringsQuery);
 
     }
 
     protected static <T> List<T> select(String url, Map<String, String> headers, Class<T> clazz, String elementsQuery, String... stringsQuery) {
-        return select(url, headers, EMPTY_MAP, EMPTY_MAP, null, 0, null, clazz, elementsQuery, stringsQuery);
+        return select(url, headers, EMPTY_MAP, EMPTY_MAP, null, -1, 0, null, clazz, elementsQuery, stringsQuery);
     }
 
     protected static <T> List<T> select(String url, Map<String, String> headers, Map<String, String> cookies, Class<T> clazz, String elementsQuery, String... stringsQuery) {
-        return select(url, headers, cookies, EMPTY_MAP, null, 0, null, clazz, elementsQuery, stringsQuery);
+        return select(url, headers, cookies, EMPTY_MAP, null, -1, 0, null, clazz, elementsQuery, stringsQuery);
     }
 
     protected static <T> List<T> select(String url, Map<String, String> headers, Map<String, String> cookies, Map<String, String> datas, Class<T> clazz, String elementsQuery, String... stringsQuery) {
-        return select(url, headers, cookies, datas, null, 0, null, clazz, elementsQuery, stringsQuery);
+        return select(url, headers, cookies, datas, null, -1, 0, null, clazz, elementsQuery, stringsQuery);
 
     }
 
-    protected static <T> List<T> select(String url, Map<String, String> headers, Map<String, String> cookies, Map<String, String> datas, Proxy proxy, Class<T> clazz, String elementsQuery, String... stringsQuery) {
-        return select(url, headers, cookies, datas, proxy, 0, null, clazz, elementsQuery, stringsQuery);
+    protected static <T> List<T> select(String url, Map<String, String> headers, Map<String, String> cookies, Map<String, String> datas, String ip, int port, Class<T> clazz, String elementsQuery, String... stringsQuery) {
+        return select(url, headers, cookies, datas, ip, port, 0, null, clazz, elementsQuery, stringsQuery);
 
     }
 
-    protected static <T> List<T> select(String url, Map<String, String> headers, Map<String, String> cookies, Map<String, String> datas, Proxy proxy, int timeout, Class<T> clazz, String elementsQuery, String... stringsQuery) {
-        return select(url, headers, cookies, datas, proxy, timeout, null, clazz, elementsQuery, stringsQuery);
+    protected static <T> List<T> select(String url, Map<String, String> headers, Map<String, String> cookies, Map<String, String> datas, String ip, int port, int timeout, Class<T> clazz, String elementsQuery, String... stringsQuery) {
+        return select(url, headers, cookies, datas, ip, port, timeout, null, clazz, elementsQuery, stringsQuery);
 
     }
 
-    protected static <T> List<T> select(String url, Map<String, String> headers, Map<String, String> cookies, Map<String, String> datas, Proxy proxy, int timeout, String userAgent, Class<T> clazz, String elementsQuery, String... stringsQuery) {
-        Document document = get(url, headers, cookies, datas, proxy, timeout, userAgent);
+    protected static <T> List<T> select(String url, Map<String, String> headers, Map<String, String> cookies, Map<String, String> datas, String ip, int port, int timeout, String userAgent, Class<T> clazz, String elementsQuery, String... stringsQuery) {
+        Document document = get(url, headers, cookies, datas, ip, port, timeout, userAgent);
         if (null == document) return EMPTY_LIST;
         return select(document, clazz, elementsQuery, stringsQuery);
     }

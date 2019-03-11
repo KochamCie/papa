@@ -31,7 +31,8 @@ public class IpRequest<T> extends BaseObject {
     private final Map<String, String> headers;
     private final Map<String, String> cookies;
     private final Map<String, String> datas;
-    private final Proxy proxy;
+    private final String ip;
+    private final int port;
     private final int timeout;
     private final String userAgent;
     private final Class<T> clazz;
@@ -45,7 +46,8 @@ public class IpRequest<T> extends BaseObject {
         this.headers = builder.headers;
         this.cookies = builder.cookies;
         this.datas = builder.datas;
-        this.proxy = builder.proxy;
+        this.ip = builder.ip;
+        this.port = builder.port;
         this.timeout = builder.timeout;
         this.userAgent = builder.userAgent;
         this.clazz = builder.clazz;
@@ -62,7 +64,8 @@ public class IpRequest<T> extends BaseObject {
         private Map<String, String> headers;
         private Map<String, String> cookies;
         private Map<String, String> datas;
-        private Proxy proxy;
+        private String ip;
+        private int port;
         private int timeout;
         private String userAgent;
         private final Class<T> clazz;
@@ -89,10 +92,12 @@ public class IpRequest<T> extends BaseObject {
             return this;
         }
 
-        public Builder proxy(Proxy proxy){
-            this.proxy = proxy;
+        public Builder proxy(String ip, int port){
+            this.ip = ip;
+            this.port = port;
             return this;
         }
+
         public Builder method(Connection.Method method){
             this.method = method;
             return this;
